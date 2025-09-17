@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Tea Shop - Premium Tea in Bangladesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/home.css">
+</head>
+<body class="bg-green-50">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="text-6xl mb-4 floating-animation">🐍</div>
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-xl text-gray-600">Loading Snake Tea Shop...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="tea-gradient shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-white flex items-center cursor-pointer" onclick="scrollToSection('home')">
+                        🐍 <span class="ml-2">Snake Tea Shop</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="nav-link text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#menu" class="nav-link text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Menu</a>
+                        <a href="#testimonials" class="nav-link text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Reviews</a>
+                        <a href="#contact" class="nav-link text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                        <button onclick="toggleCart()" class="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-green-200">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-green-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#menu" class="nav-link text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium">Menu</a>
+                <a href="#testimonials" class="nav-link text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium">Reviews</a>
+                <a href="#contact" class="nav-link text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <button onclick="toggleCart()" class="text-white hover:text-green-200 block px-3 py-2 rounded-md text-base font-medium w-full text-left">
+                    Cart (<span id="mobileCartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center hero-gradient parallax-bg">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="glass-effect rounded-3xl p-8 md:p-12 fade-in">
+                <div class="text-6xl md:text-8xl mb-6 floating-animation">🐍</div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                    Welcome to Snake Tea Shop
+                </h1>
+                <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow-md font-medium">
+                    Discover the finest premium teas from across Bangladesh and beyond. 
+                    Experience the perfect blend of tradition and quality in every cup.
+                </p>
+                <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                    <button onclick="scrollToSection('menu')" class="inline-block bg-white text-green-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg">
+                        Explore Our Menu
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="inline-block border-3 border-white bg-transparent text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-800 transition-all transform hover:scale-105 shadow-lg">
+                        Visit Our Shop
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="50">0</div>
+                    <p class="text-gray-600 font-medium">Tea Varieties</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="1000">0</div>
+                    <p class="text-gray-600 font-medium">Happy Customers</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="5">0</div>
+                    <p class="text-gray-600 font-medium">Years Experience</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="24">0</div>
+                    <p class="text-gray-600 font-medium">Hours Open</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Snake Tea Shop</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Located in the heart of Bangladesh, Snake Tea Shop has been serving premium quality teas since 2020. 
+                    We source our teas directly from local gardens and international suppliers to bring you the finest flavors.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 fade-in">
+                    <div class="text-5xl mb-4 tea-steam">🌿</div>
+                    <h3 class="text-xl font-semibold mb-3">Premium Quality</h3>
+                    <p class="text-gray-600">Hand-selected teas from the finest gardens across Bangladesh and the world</p>
+                </div>
+                <div class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 fade-in">
+                    <div class="text-5xl mb-4">🇧🇩</div>
+                    <h3 class="text-xl font-semibold mb-3">Local Heritage</h3>
+                    <p class="text-gray-600">Supporting Bangladesh tea culture and traditions while embracing global flavors</p>
+                </div>
+                <div class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 fade-in">
+                    <div class="text-5xl mb-4 tea-steam">☕</div>
+                    <h3 class="text-xl font-semibold mb-3">Expert Brewing</h3>
+                    <p class="text-gray-600">Perfect preparation techniques for every cup, ensuring optimal flavor extraction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Tea Menu</h2>
+                <p class="text-lg text-gray-600 mb-8">Discover our carefully curated selection of premium teas</p>
+                
+                <!-- Search Bar -->
+                <div class="max-w-md mx-auto mb-8">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search teas..." class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8" id="categoryFilters">
+                    <button class="category-filter active px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-category="all">All Teas</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+                <!-- Tea items will be populated by JavaScript -->
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-12 hidden">
+                <div class="text-6xl mb-4">🔍</div>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No teas found</h3>
+                <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                <p class="text-lg text-gray-600">Real reviews from tea lovers across Bangladesh</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="text-2xl mr-3">👨‍💼</div>
+                        <div>
+                            <h4 class="font-semibold">Ahmed Rahman</h4>
+                            <p class="text-sm text-gray-600">Dhaka</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"Best tea shop in Bangladesh! The Sylhet Special Black Tea is absolutely amazing. Great quality and fast delivery."</p>
+                </div>
+                
+                <div class="testimonial-card p-6 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="text-2xl mr-3">👩‍🎓</div>
+                        <div>
+                            <h4 class="font-semibold">Fatima Khatun</h4>
+                            <p class="text-sm text-gray-600">Chittagong</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"Love the variety of herbal teas! The Chamomile Dreams helps me sleep better. Highly recommended!"</p>
+                </div>
+                
+                <div class="testimonial-card p-6 rounded-xl shadow-lg fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="text-2xl mr-3">👨‍🍳</div>
+                        <div>
+                            <h4 class="font-semibold">Karim Uddin</h4>
+                            <p class="text-sm text-gray-600">Sylhet</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"As a chef, I appreciate quality ingredients. Snake Tea Shop provides the finest teas for my restaurant."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-lg text-gray-600">Get in touch with Snake Tea Shop</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-green-50 p-8 rounded-xl shadow-lg fade-in">
+                    <h3 class="text-2xl font-semibold mb-6">Send us a Message</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                            <input type="text" id="contactName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="contactEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" id="contactPhone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="contactSubject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                                <option value="general">General Inquiry</option>
+                                <option value="order">Order Support</option>
+                                <option value="wholesale">Wholesale Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="contactMessage" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-all transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Shop Info & Map -->
+                <div class="space-y-8 fade-in">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6">Visit Our Shop</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-green-600 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-lg">Address</p>
+                                    <p class="text-gray-600">123 Tea Garden Road<br>Sylhet, Bangladesh 3100</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-green-600 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-lg">Phone</p>
+                                    <p class="text-gray-600">+880 1234-567890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-green-600 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-lg">Email</p>
+                                    <p class="text-gray-600">info@snaketeashop.bd</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-green-600 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-lg">Hours</p>
+                                    <p class="text-gray-600">Daily: 8:00 AM - 10:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-truck text-green-600 mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-lg">Delivery</p>
+                                    <p class="text-gray-600">Free delivery within Sylhet<br>Nationwide shipping available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Placeholder -->
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 h-64 rounded-xl flex items-center justify-center shadow-lg">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt text-5xl text-green-600 mb-4"></i>
+                            <p class="text-xl font-semibold text-green-800">Snake Tea Shop Location</p>
+                            <p class="text-green-700">Sylhet, Bangladesh</p>
+                            <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                <i class="fas fa-directions mr-2"></i>Get Directions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 border-b bg-green-600 text-white">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-shopping-cart mr-2"></i>Your Cart
+                </h3>
+                <button onclick="toggleCart()" class="text-white hover:text-green-200 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-6 flex-1 overflow-y-auto" style="height: calc(100vh - 200px);">
+            <div id="cartItems">
+                <div class="text-center py-12">
+                    <div class="text-6xl mb-4">🛒</div>
+                    <p class="text-gray-500">Your cart is empty</p>
+                    <p class="text-sm text-gray-400 mt-2">Add some delicious teas to get started!</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 border-t bg-gray-50">
+            <div class="space-y-3 mb-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600">Subtotal:</span>
+                    <span class="font-semibold" id="cartSubtotal">৳0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-600">Delivery:</span>
+                    <span class="font-semibold text-green-600" id="deliveryFee">Free</span>
+                </div>
+                <div class="border-t pt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-semibold">Total:</span>
+                        <span class="text-lg font-bold text-green-600" id="cartTotal">৳0</span>
+                    </div>
+                </div>
+            </div>
+            <button id="checkoutBtn" onclick="checkout()" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                <i class="fas fa-credit-card mr-2"></i>Place Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="tea-gradient text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold mb-4 flex items-center">
+                        🐍 <span class="ml-2">Snake Tea Shop</span>
+                    </div>
+                    <p class="text-green-100 mb-4 max-w-md">
+                        Premium tea experience in the heart of Bangladesh. 
+                        Quality, tradition, and excellence in every cup since 2020.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-green-100 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-green-100 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-green-100 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-green-100 hover:text-white transition-colors text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="nav-link text-green-100 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="nav-link text-green-100 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#menu" class="nav-link text-green-100 hover:text-white transition-colors">Tea Menu</a></li>
+                        <li><a href="#testimonials" class="nav-link text-green-100 hover:text-white transition-colors">Reviews</a></li>
+                        <li><a href="#contact" class="nav-link text-green-100 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tea Categories</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-green-100">Black Tea</span></li>
+                        <li><span class="text-green-100">Green Tea</span></li>
+                        <li><span class="text-green-100">Herbal Tea</span></li>
+                        <li><span class="text-green-100">Oolong Tea</span></li>
+                        <li><span class="text-green-100">White Tea</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-green-700 mt-8 pt-8 text-center">
+                <p class="text-green-100">&copy; 2024 Snake Tea Shop. All rights reserved. | Made with ❤️ in Bangladesh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-110 hidden z-30">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../assets/js/home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+.tea-gradient {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #6b8e23 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5016 25%, #4a7c59 50%, #6b8e23 75%, #8fbc8f 100%);
+        }
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .tea-card:hover {
+            transform: translateY(-8px);
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+        .category-filter.active {
+            background: #16a34a;
+            color: white;
+            transform: scale(1.05);
+        }
+        .search-highlight {
+            background: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            border: 1px solid #e0f2fe;
+        }
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #16a34a;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #16a34a;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .notification {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .tea-steam {
+            position: relative;
+            overflow: hidden;
+        }
+        .tea-steam::before {
+            content: '💨';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: steam 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        @keyframes steam {
+            0%, 100% { transform: translateX(-50%) translateY(0px); opacity: 0.7; }
+            50% { transform: translateX(-50%) translateY(-15px); opacity: 0.3; }
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
